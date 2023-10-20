@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class UiController : MonoBehaviour
 {
@@ -10,18 +11,39 @@ public class UiController : MonoBehaviour
     [SerializeField] private Sprite[] back_states;
     [SerializeField] private GameObject book;
     [SerializeField] private GameObject def;
+    [SerializeField] private VideoPlayer vp;
+    private bool isClicked;
     public int nowState;
 
     // Start is called before the first frame update
     void Start()
     {
         nowState = 0;
+        
     }
 
-    public void OnButtonLoad(string scenename)
+    
+    public void OnButtonLoad()
     {
-        SceneManager.LoadScene(scenename);
+        vp.Prepare();
+        vp.loopPointReached += LoadScene;
+        play();
     }
+
+    private void play()
+    {
+        vp.Play();
+    }
+
+    private void LoadScene(VideoPlayer source)
+    {
+        SceneManager.LoadScene("MainStage");
+    }
+  
+    
+
+
+
 
     public void ChangeBackState(int state)
     {
@@ -51,6 +73,9 @@ public class UiController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isClicked && !vp.isPlaying)
+        {
+            SceneManager.LoadScene("MainStage");
+        }
     }
 }
