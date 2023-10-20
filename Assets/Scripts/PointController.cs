@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PointController : MonoBehaviour
 {
+
     
     void Start()
     {
@@ -20,6 +22,9 @@ public class PointController : MonoBehaviour
                 if (CheckCollider().name == "Vnuk")
                 {
                     CheckCollider().GetComponent<VnukData>().ChangeState(1);
+                } else if (CheckCollider().name == "WardrobeTrigger")
+                {
+                    FindObjectOfType<UiController>().ChangeBackState(1);
                 }
             }
         }
