@@ -1,2 +1,2 @@
 # GameJam-AVES
-Our short 2D game
+Our simple 2D game
