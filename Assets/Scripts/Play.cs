@@ -9,6 +9,6 @@ public class Play : MonoBehaviour
     public void play()
     {
         Time.timeScale = 1f;
-        panel.SetActive(false);
+        panel.SetActive(false); //panel disable
     }
 }
