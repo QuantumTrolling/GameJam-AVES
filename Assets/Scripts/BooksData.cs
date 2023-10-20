@@ -9,9 +9,9 @@ public class BooksData : MonoBehaviour
 
     void Smash(GameObject[] mas)
     {
-        for (int i = mas.Length - 1; i >= 1; i--)
+        for (int i = mas.Length - 2; i >= 1; i--)
         {
-            int j = random.Next(1, i + 2);
+            int j = random.Next(1, i + 1);
             // обменять значения data[j] и data[i]
             var temp = mas[j].GetComponent<SpriteRenderer>().sprite;
             mas[j].GetComponent<SpriteRenderer>().sprite = mas[i].GetComponent<SpriteRenderer>().sprite;
