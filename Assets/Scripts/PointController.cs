@@ -15,7 +15,13 @@ public class PointController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            CheckCollider();
+            if (CheckCollider() != null)
+            {
+                if (CheckCollider().name == "Vnuk")
+                {
+                    CheckCollider().GetComponent<VnukData>().ChangeState(1);
+                }
+            }
         }
     }
 
