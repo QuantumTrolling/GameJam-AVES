@@ -17,6 +17,11 @@ public class UiController : MonoBehaviour
         SceneManager.LoadScene(scenename);
     }
 
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
     // Update is called once per frame
     void Update()
     {
