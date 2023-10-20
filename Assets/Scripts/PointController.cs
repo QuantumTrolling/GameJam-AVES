@@ -8,9 +8,12 @@ using UnityEngine.UI;
 public class PointController : MonoBehaviour
 {
     private UiController ui;
-    
+    private GameObject[] chosenBooks;
+
     void Start()
     {
+        chosenBooks = new GameObject[2];
+        chosenBooks[0] = chosenBooks[1] = null;
         Cursor.visible = true;
         ui = FindObjectOfType<UiController>();
     }
@@ -36,15 +39,21 @@ public class PointController : MonoBehaviour
                     }
     
                 }
-                if (CheckCollider().tag == "book")
+                if (CheckCollider().tag == "book" && CheckCollider().name != "1" && CheckCollider().name != "14" && chosenBooks[0] == null)
                 {
-                    var firstBook = CheckCollider();
-                    var secondBook = GameObject.Find((Int32.Parse((firstBook.name)) + 1).ToString());
-                    if (secondBook != null)
-                    {
-                        ui.BookChanger(firstBook, secondBook);
-                    }
-                }
+                    Debug.Log("choosed 1");    
+                    chosenBooks[0] = CheckCollider();
+                    chosenBooks[0].GetComponent<SpriteRenderer>().color = Color.red;
+                } else if (CheckCollider().tag == "book" && chosenBooks[0] != null && chosenBooks[0] != CheckCollider() && CheckCollider().name != "1" && CheckCollider().name != "14")
+                {
+                    Debug.Log("choosed 2");
+                    chosenBooks[1] = CheckCollider();
+                    chosenBooks[1].GetComponent<SpriteRenderer>().color = Color.red;
+                    ui.BookChanger(chosenBooks[0], chosenBooks[1]);
+                    chosenBooks[1].GetComponent<SpriteRenderer>().color = chosenBooks[0].GetComponent<SpriteRenderer>().color = Color.white;
+                    chosenBooks[0] = chosenBooks[1] = null;
+                    
+                } 
             }
         } 
     }

@@ -31,8 +31,8 @@ public class UiController : MonoBehaviour
 
     public void ActiveBook()
     {
-        book.SetActive(true);
         def.SetActive(false);
+        book.SetActive(true);
     }
 
     public void BookChanger(GameObject book1, GameObject book2)
