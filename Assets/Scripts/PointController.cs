@@ -9,20 +9,54 @@ public class PointController : MonoBehaviour
 {
     private UiController ui;
     private GameObject[] chosenBooks;
+    private GameObject[] chosenBears;
     public bool blocked;
-
+    public bool stateIgrushki;
     void Start()
     {
+        stateIgrushki = true;
         blocked = false;
         chosenBooks = new GameObject[2];
+        chosenBears = new GameObject[3];
+        chosenBears[0] = chosenBears[1] = chosenBears[2] = null;
         chosenBooks[0] = chosenBooks[1] = null;
         Cursor.visible = true;
         ui = FindObjectOfType<UiController>();
     }
 
+    bool checkNull(GameObject[] obj)
+    {
+        bool flag = true;
+        foreach (var item in obj)
+        {
+            if (item == null)
+            {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
   
     void Update()
     {
+        
+
+        if (GameObject.Find("CanvasIgrushki") != null)
+        {
+            stateIgrushki = GameObject.Find("CanvasIgrushki").GetComponent<IgrushkiData>().isBlocked;
+            var checkSolutionIgrushki = GameObject.Find("CanvasIgrushki").GetComponent<IgrushkiData>();
+            if (checkNull(chosenBears))
+            {
+                if (checkSolutionIgrushki.CheckSolution(chosenBears))
+                {
+                    ui.makeVisible(1);
+                }
+                ui.DisactiveGame("Igrushki");
+            }
+        }
+        
+
         if (Input.GetMouseButtonDown(0) && !blocked)
         {
             if (CheckCollider() != null)
@@ -39,14 +73,28 @@ public class PointController : MonoBehaviour
                     CheckCollider().GetComponent<VnukData>().ChangeState(1);
                 } else if (CheckCollider().name == "WardrobeTrigger")
                 {
+
+                    CheckCollider().GetComponent<BoxCollider2D>().enabled = false;
+                    var soundWardrobe = GameObject.Find("MainSound").GetComponent<Sounds>().sounds[1];
+                    GameObject.Find("MainSound").GetComponent<Sounds>().PlaySound(soundWardrobe);
+                    ui.ChangeBackState(1);
+                    /*
                     if (ui.nowState == 0)
                     {
-                        ui.ChangeBackState(1);
+                        
                     } else
                     {
                         ui.ActiveBook();
                     }
-    
+                    */
+                }
+                if (CheckCollider().name == "Knigi")
+                {
+                    ui.ActiveGame("Knigi");
+                }
+                if (CheckCollider().name == "Igrushki")
+                {
+                    ui.ActiveGame("Igrushki");
                 }
                 if (CheckCollider().tag == "book" && CheckCollider().name != "0" && CheckCollider().name != "15" && chosenBooks[0] == null)
                 {
@@ -71,6 +119,19 @@ public class PointController : MonoBehaviour
                     }
                     
                     ui.ShowInventory();
+                }
+                if (CheckCollider().tag == "igrushka" && !stateIgrushki)
+                {
+                    Debug.Log("Choosen...");
+                    for (int i = 0; i < chosenBears.Length; i++)
+                    {
+                        if (chosenBears[i] == null)
+                        {
+                            chosenBears[i] = CheckCollider();
+                            break;
+                        }
+                    }
+                    
                 }
             }
         } 
