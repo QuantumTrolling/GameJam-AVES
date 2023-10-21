@@ -25,6 +25,7 @@ public class PointController : MonoBehaviour
         {
             if (CheckCollider() != null)
             {
+                Debug.Log(CheckCollider().name);
                 if (CheckCollider().name == "Vnuk")
                 {
                     CheckCollider().GetComponent<VnukData>().ChangeState(1);
@@ -39,14 +40,12 @@ public class PointController : MonoBehaviour
                     }
     
                 }
-                if (CheckCollider().tag == "book" && CheckCollider().name != "1" && CheckCollider().name != "14" && chosenBooks[0] == null)
+                if (CheckCollider().tag == "book" && CheckCollider().name != "0" && CheckCollider().name != "15" && chosenBooks[0] == null)
                 {
-                    Debug.Log("choosed 1");    
                     chosenBooks[0] = CheckCollider();
                     chosenBooks[0].GetComponent<SpriteRenderer>().color = Color.red;
-                } else if (CheckCollider().tag == "book" && chosenBooks[0] != null && chosenBooks[0] != CheckCollider() && CheckCollider().name != "1" && CheckCollider().name != "14")
+                } else if (CheckCollider().tag == "book" && chosenBooks[0] != null && chosenBooks[0] != CheckCollider() && CheckCollider().name != "0" && CheckCollider().name != "15")
                 {
-                    Debug.Log("choosed 2");
                     chosenBooks[1] = CheckCollider();
                     chosenBooks[1].GetComponent<SpriteRenderer>().color = Color.red;
                     ui.BookChanger(chosenBooks[0], chosenBooks[1]);
@@ -54,6 +53,11 @@ public class PointController : MonoBehaviour
                     chosenBooks[0] = chosenBooks[1] = null;
                     
                 } 
+                if (CheckCollider().name == "InventoryTrigger")
+                {
+                    CheckCollider().GetComponent<SpriteRenderer>().enabled = true;
+                    ui.ShowInventory();
+                }
             }
         } 
     }

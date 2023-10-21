@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class BooksData : MonoBehaviour
 {
@@ -17,14 +18,32 @@ public class BooksData : MonoBehaviour
             mas[j].GetComponent<SpriteRenderer>().sprite = mas[i].GetComponent<SpriteRenderer>().sprite;
             mas[i].GetComponent<SpriteRenderer>().sprite = temp;
         }
-        
+
+    }
+
+    public bool CheckIsSolved()
+    {
+        var flag = true;
+        for (int i = 0; i < spritesBooks.Length; i++)
+        {
+            var spritename = spritesBooks[i].GetComponent<SpriteRenderer>().sprite.name;
+            if (spritename != "books_" + spritesBooks[i].name)
+            {
+                flag = false;
+            }
+        }
+        return flag;
     }
 
     void Start()
     {
+ 
         spritesBooks = GameObject.FindGameObjectsWithTag("book");
         Smash(spritesBooks);
+        
     }
+
+
 
     // Update is called once per frame
     void Update()
