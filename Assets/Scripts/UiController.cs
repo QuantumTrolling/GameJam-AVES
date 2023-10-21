@@ -19,17 +19,23 @@ public class UiController : MonoBehaviour
     private bool isClicked;
     public int nowState;
 
-    // Start is called before the first frame update
+    private AudioClip play_sound;
+    private Sounds audcontroller;
+
+
     void Start()
     {
         nowState = 0;
-        
+
+        audcontroller = GameObject.Find("MainSound").GetComponent<Sounds>();
+        play_sound = audcontroller.sounds[0]; //0 - звук запуска
+
     }
 
     
     public void OnButtonLoad()
     {
-        //PLaySound(sounds[0]);
+        audcontroller.PlaySound(play_sound);
         vp.Prepare();
         vp.loopPointReached += LoadScene;
         play();
@@ -118,6 +124,7 @@ public class UiController : MonoBehaviour
 
     public void Exit()
     {
+        audcontroller.PlaySound(play_sound);
         Application.Quit();
     }
 
