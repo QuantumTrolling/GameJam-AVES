@@ -9,6 +9,7 @@ public class Play : MonoBehaviour
     public void play()
     {
         Time.timeScale = 1f;
-        panel.SetActive(false); //panel disable
+        panel.SetActive(false);
+        GameObject.Find("Main Camera").GetComponent<PointController>().blocked = false;
     }
 }
