@@ -45,11 +45,7 @@ public class UiController : MonoBehaviour
         return inventoryCanvas.enabled;
     }
 
-    public void HideInventory()
-    {
-        inventoryCanvas.enabled = false;
-    }
-
+   
     private void play()
     {
         vp.Play();
@@ -60,7 +56,20 @@ public class UiController : MonoBehaviour
         SceneManager.LoadScene("MainStage");
     }
   
-    
+    public void putToInventory(GameObject subj)
+    {
+        var slots = GameObject.FindGameObjectsWithTag("slot");
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[slots.Length-i-1].GetComponent<Image>().sprite == null)
+            {
+                slots[slots.Length-i-1].GetComponent<Image>().sprite = subj.GetComponent<SpriteRenderer>().sprite;
+                Destroy(subj);
+                return;
+            }
+        }
+       
+    }
 
 
 
@@ -80,7 +89,14 @@ public class UiController : MonoBehaviour
     public void DisactiveBook()
     {
         def.SetActive(true);
+        GameObject.Find("WardrobeTrigger").GetComponent<BoxCollider2D>().enabled = false;
         book.SetActive(false);
+    }
+
+    public void CloseInventory()
+    {
+        inventoryCanvas.enabled = false;
+        GameObject.Find("InventoryTrigger").GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void BookChanger(GameObject book1, GameObject book2)

@@ -9,9 +9,11 @@ public class PointController : MonoBehaviour
 {
     private UiController ui;
     private GameObject[] chosenBooks;
+    public bool blocked;
 
     void Start()
     {
+        blocked = false;
         chosenBooks = new GameObject[2];
         chosenBooks[0] = chosenBooks[1] = null;
         Cursor.visible = true;
@@ -21,11 +23,17 @@ public class PointController : MonoBehaviour
   
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !blocked)
         {
             if (CheckCollider() != null)
             {
                 Debug.Log(CheckCollider().name);
+
+                if (CheckCollider().tag == "obj")
+                {
+                    ui.putToInventory(CheckCollider());
+                }
+
                 if (CheckCollider().name == "Vnuk")
                 {
                     CheckCollider().GetComponent<VnukData>().ChangeState(1);
@@ -56,6 +64,12 @@ public class PointController : MonoBehaviour
                 if (CheckCollider().name == "InventoryTrigger")
                 {
                     CheckCollider().GetComponent<SpriteRenderer>().enabled = true;
+                    if (GameObject.Find("пластырь") != null)
+                    {
+                        GameObject.Find("пластырь").GetComponent<SpriteRenderer>().enabled = true;
+                        GameObject.Find("пластырь").GetComponent<BoxCollider2D>().enabled = true;
+                    }
+                    
                     ui.ShowInventory();
                 }
             }
