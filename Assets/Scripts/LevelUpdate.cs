@@ -14,7 +14,7 @@ public class LevelUpdate : MonoBehaviour
 
     void Update()
     {
-        var minutes = 1 - Mathf.Round(timer.time / 60);
+        var minutes = 2 - Mathf.Round(timer.time / 60);
         var seconds = Mathf.Round(60 - timer.time % 60);
         timerText.text = minutes + ":" + seconds;
     }
