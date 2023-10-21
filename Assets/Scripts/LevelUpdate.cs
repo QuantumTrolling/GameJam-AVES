@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LevelUpdate : MonoBehaviour
 {
-    [SerializeField] private TimerController timer;
+    public TimerController timer;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private GameObject Lost;
     

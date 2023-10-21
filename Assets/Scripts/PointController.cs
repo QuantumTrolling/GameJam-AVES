@@ -10,6 +10,7 @@ public class PointController : MonoBehaviour
     private UiController ui;
     private GameObject[] chosenBooks;
     private GameObject[] chosenBears;
+    [SerializeField] GameObject win;
     public bool blocked;
     public bool stateIgrushki;
     void Start()
@@ -40,7 +41,18 @@ public class PointController : MonoBehaviour
   
     void Update()
     {
-        
+        var inventoryf = true; 
+        var inventory = GameObject.FindGameObjectsWithTag("slot");
+        foreach (var item in inventory)
+        {
+            if (item.GetComponent<Image>().sprite == null)
+            {
+                inventoryf = false;
+            } else
+            {
+                inventoryf = true;
+            }
+        }
 
         if (GameObject.Find("CanvasIgrushki") != null)
         {
@@ -74,7 +86,7 @@ public class PointController : MonoBehaviour
 
                 if (CheckCollider().name == "Vnuk" && CheckCollider().GetComponent<VnukData>() != null)
                 {
-                    CheckCollider().GetComponent<VnukData>().anim.SetTrigger("Knifer");
+                    if (!CheckCollider().GetComponent<VnukData>().changed) { CheckCollider().GetComponent<VnukData>().anim.SetTrigger("Knifer"); }
                     CheckCollider().GetComponent<VnukData>().ChangeState(1);
                 } else if (CheckCollider().name == "WardrobeTrigger")
                 {
@@ -93,7 +105,12 @@ public class PointController : MonoBehaviour
                     }
                     */
                 }
-                if (CheckCollider().name == "Knigi")
+                if (CheckCollider().name == "Vnuk" && CheckCollider().GetComponent<VnukData>().changed && inventoryf )
+                {
+                    win.SetActive(true);
+                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<LevelUpdate>().timer.StopTimer();
+                }
+                    if (CheckCollider().name == "Knigi")
                 {
                     ui.ActiveGame("Knigi");
                 }
