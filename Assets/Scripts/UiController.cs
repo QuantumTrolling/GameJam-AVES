@@ -21,6 +21,7 @@ public class UiController : MonoBehaviour
     public int nowState;
 
     private AudioClip play_sound;
+    private AudioClip book_sound;
     private Sounds audcontroller;
 
 
@@ -30,6 +31,7 @@ public class UiController : MonoBehaviour
 
         audcontroller = GameObject.Find("MainSound").GetComponent<Sounds>();
         play_sound = audcontroller.sounds[0]; //0 - звук запуска
+        book_sound = audcontroller.sounds[3];
 
     }
 
@@ -128,6 +130,7 @@ public class UiController : MonoBehaviour
 
     public void BookChanger(GameObject book1, GameObject book2)
     {
+        audcontroller.PlaySound(book_sound);
         var firstPos = book1.GetComponent<SpriteRenderer>().sprite;
         var secondPos = book2.GetComponent<SpriteRenderer>().sprite;
         book1.GetComponent<SpriteRenderer>().sprite = secondPos;
