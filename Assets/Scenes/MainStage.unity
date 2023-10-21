@@ -180,17 +180,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 'Exit
+
+'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5b3dca80f723829498d61a78da274877, type: 2}
+  m_sharedMaterial: {fileID: 2263472384385087844, guid: 5b3dca80f723829498d61a78da274877, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -207,8 +209,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -546,7 +548,7 @@ GameObject:
   - component: {fileID: 134169515}
   - component: {fileID: 134169514}
   m_Layer: 5
-  m_Name: Button
+  m_Name: MainMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -569,8 +571,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000076294, y: -178}
-  m_SizeDelta: {x: 412.87, y: 77.41}
+  m_AnchoredPosition: {x: 0, y: -165.42}
+  m_SizeDelta: {x: 412.87, y: 102.56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &134169514
 MonoBehaviour:
@@ -615,7 +617,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 134169515}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1140145034}
+        m_TargetAssemblyTypeName: UiController, Assembly-CSharp
+        m_MethodName: OnButtonLoad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &134169515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -629,7 +643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1113,7 +1127,7 @@ GameObject:
   - component: {fileID: 245861852}
   - component: {fileID: 245861851}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: ExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1136,8 +1150,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035, y: -333}
-  m_SizeDelta: {x: 412.87, y: 77.41}
+  m_AnchoredPosition: {x: 0.000038624, y: -322.71}
+  m_SizeDelta: {x: 412.87, y: 97.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &245861851
 MonoBehaviour:
@@ -1182,7 +1196,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 245861852}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1140145034}
+        m_TargetAssemblyTypeName: UiController, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &245861852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1196,7 +1222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1525,17 +1551,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Exit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5b3dca80f723829498d61a78da274877, type: 2}
+  m_sharedMaterial: {fileID: 2263472384385087844, guid: 5b3dca80f723829498d61a78da274877, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1552,8 +1578,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2290,6 +2316,7 @@ GameObject:
   - component: {fileID: 587041937}
   - component: {fileID: 587041936}
   - component: {fileID: 587041935}
+  - component: {fileID: 587041939}
   m_Layer: 5
   m_Name: Win
   m_TagString: Untagged
@@ -2383,6 +2410,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &587041939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587041934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e322d8cfa01941d45a51f6caa9eef5c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  back: {fileID: 0}
+  back_states: []
+  book: {fileID: 0}
+  igrushki: {fileID: 0}
+  def: {fileID: 0}
+  vp: {fileID: 0}
+  inventoryCanvas: {fileID: 0}
+  hiddenObjects: []
+  nowState: 0
 --- !u!1 &604865236
 GameObject:
   m_ObjectHideFlags: 0
@@ -3221,17 +3269,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Main Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5b3dca80f723829498d61a78da274877, type: 2}
+  m_sharedMaterial: {fileID: 2263472384385087844, guid: 5b3dca80f723829498d61a78da274877, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3248,8 +3296,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4566,6 +4614,7 @@ GameObject:
   - component: {fileID: 1140145032}
   - component: {fileID: 1140145031}
   - component: {fileID: 1140145030}
+  - component: {fileID: 1140145034}
   m_Layer: 5
   m_Name: Lost
   m_TagString: Untagged
@@ -4659,6 +4708,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1140145034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140145029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e322d8cfa01941d45a51f6caa9eef5c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  back: {fileID: 0}
+  back_states: []
+  book: {fileID: 0}
+  igrushki: {fileID: 0}
+  def: {fileID: 0}
+  vp: {fileID: 0}
+  inventoryCanvas: {fileID: 0}
+  hiddenObjects: []
+  nowState: 0
 --- !u!1 &1168539691
 GameObject:
   m_ObjectHideFlags: 0
@@ -4802,7 +4872,7 @@ GameObject:
   - component: {fileID: 1201561458}
   - component: {fileID: 1201561457}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: ExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4825,8 +4895,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035, y: -333}
-  m_SizeDelta: {x: 412.87, y: 77.41}
+  m_AnchoredPosition: {x: 0.000038624, y: -320.56}
+  m_SizeDelta: {x: 412.87, y: 102.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1201561457
 MonoBehaviour:
@@ -4871,7 +4941,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1201561458}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 587041939}
+        m_TargetAssemblyTypeName: UiController, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1201561458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4885,7 +4967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6114,7 +6196,7 @@ GameObject:
   - component: {fileID: 1624784882}
   - component: {fileID: 1624784881}
   m_Layer: 5
-  m_Name: Button
+  m_Name: MainMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6137,8 +6219,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000076294, y: -178}
-  m_SizeDelta: {x: 412.87, y: 77.41}
+  m_AnchoredPosition: {x: 0, y: -161.89}
+  m_SizeDelta: {x: 412.87, y: 109.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1624784881
 MonoBehaviour:
@@ -6183,7 +6265,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1624784882}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 587041939}
+        m_TargetAssemblyTypeName: UiController, Assembly-CSharp
+        m_MethodName: OnButtonLoad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1624784882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6197,7 +6291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6802,17 +6896,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Main Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5b3dca80f723829498d61a78da274877, type: 2}
+  m_sharedMaterial: {fileID: 2263472384385087844, guid: 5b3dca80f723829498d61a78da274877, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6829,8 +6923,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
