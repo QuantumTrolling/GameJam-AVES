@@ -29,6 +29,7 @@ public class UiController : MonoBehaviour
     
     public void OnButtonLoad()
     {
+       // PLaySound(sounds[0]);
         vp.Prepare();
         vp.loopPointReached += LoadScene;
         play();

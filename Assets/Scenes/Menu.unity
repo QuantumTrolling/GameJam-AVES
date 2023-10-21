@@ -520,6 +520,8 @@ MonoBehaviour:
   book: {fileID: 0}
   def: {fileID: 0}
   vp: {fileID: 176561383}
+  inventoryCanvas: {fileID: 0}
+  hiddenObjects: []
   nowState: 0
 --- !u!1 &353029916
 GameObject:
