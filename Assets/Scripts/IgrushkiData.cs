@@ -71,19 +71,24 @@ public class IgrushkiData : MonoBehaviour
         {
             returnBear(Igrushki[combination[0]]);
             
-        } else if (RealTime == 4)
+        } else if (RealTime == 3)
         {
             changeBear(Igrushki[combination[1]]);
-        } else if (RealTime == 6)
+        } else if (RealTime == 5)
         {
             returnBear(Igrushki[combination[1]]);
-        } else if (RealTime == 8)
+        } else if (RealTime == 6)
         {
             changeBear(Igrushki[combination[2]]);
-        } else if (RealTime == 10)
+        } else if (RealTime == 8)
         {
             returnBear(Igrushki[combination[2]]);
             isBlocked = false;
+        } else if (RealTime == 15)
+        {
+            GameTimer = 0;
+            isBlocked = true;
+            return;
         }
     }
 

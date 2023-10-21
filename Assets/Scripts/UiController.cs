@@ -37,7 +37,10 @@ public class UiController : MonoBehaviour
 
     public void makeVisible(int num)
     {
-        hiddenObjects[num].SetActive(true);
+        if (hiddenObjects[num] != null)
+        {
+            hiddenObjects[num].SetActive(true);
+        }
     }
     
     public void OnButtonLoad()

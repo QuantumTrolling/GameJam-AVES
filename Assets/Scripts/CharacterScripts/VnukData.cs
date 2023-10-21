@@ -6,10 +6,12 @@ public class VnukData : MonoBehaviour
 {
     [SerializeField] SpriteRenderer sr;
     [SerializeField] private Sprite[] states;
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
     }
 

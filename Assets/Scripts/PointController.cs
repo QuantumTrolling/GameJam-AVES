@@ -51,6 +51,10 @@ public class PointController : MonoBehaviour
                 if (checkSolutionIgrushki.CheckSolution(chosenBears))
                 {
                     ui.makeVisible(1);
+                } else
+                {
+                    chosenBears[0] = chosenBears[1] = chosenBears[2] = null;
+                    Debug.Log("Попробуй ещё раз!");
                 }
                 ui.DisactiveGame("Igrushki");
             }
@@ -68,8 +72,9 @@ public class PointController : MonoBehaviour
                     ui.putToInventory(CheckCollider());
                 }
 
-                if (CheckCollider().name == "Vnuk")
+                if (CheckCollider().name == "Vnuk" && CheckCollider().GetComponent<VnukData>() != null)
                 {
+                    CheckCollider().GetComponent<VnukData>().anim.SetTrigger("Knifer");
                     CheckCollider().GetComponent<VnukData>().ChangeState(1);
                 } else if (CheckCollider().name == "WardrobeTrigger")
                 {

@@ -7,6 +7,10 @@ public class LevelUpdate : MonoBehaviour
 {
     [SerializeField] private TimerController timer;
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private GameObject Lost;
+    
+    
+    
 
     private AudioClip main_sound;
     private Sounds audcontroller;
@@ -21,8 +25,13 @@ public class LevelUpdate : MonoBehaviour
 
     void Update()
     {
-        var minutes = 2 - Mathf.Round(timer.time / 60);
-        var seconds = Mathf.Round(60 - timer.time % 60);
+        if (timer.time >= 180)
+        {
+            Lost.SetActive(true);
+            timer.StopTimer();
+        }
+        float minutes = 2 - Mathf.FloorToInt(timer.time / 60);
+        float seconds = 60 - Mathf.FloorToInt(timer.time % 60);
         timerText.text = minutes + ":" + seconds;
     }
 }
