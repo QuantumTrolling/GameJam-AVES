@@ -12,6 +12,7 @@ public class UiController : MonoBehaviour
     [SerializeField] private Image back;
     [SerializeField] private Sprite[] back_states;
     [SerializeField] private GameObject book;
+    [SerializeField] private GameObject igrushki;
     [SerializeField] private GameObject def;
     [SerializeField] private VideoPlayer vp;
     [SerializeField] private Canvas inventoryCanvas;
@@ -32,6 +33,10 @@ public class UiController : MonoBehaviour
 
     }
 
+    public void makeVisible(int num)
+    {
+        hiddenObjects[num].SetActive(true);
+    }
     
     public void OnButtonLoad()
     {
@@ -86,17 +91,33 @@ public class UiController : MonoBehaviour
         back.sprite = back_states[state];
     }
 
-    public void ActiveBook()
+    public void ActiveGame(string game)
     {
         def.SetActive(false);
-        book.SetActive(true);
+        switch(game)
+        {
+            case "Knigi":
+                book.SetActive(true);
+                break;
+            case "Igrushki":
+                igrushki.SetActive(true);
+                break;
+        }
+        
     }
 
-    public void DisactiveBook()
+    public void DisactiveGame(string game)
     {
         def.SetActive(true);
-        GameObject.Find("WardrobeTrigger").GetComponent<BoxCollider2D>().enabled = false;
-        book.SetActive(false);
+        switch (game)
+        {
+            case "Knigi":
+                book.SetActive(false);
+                break;
+            case "Igrushki":
+                igrushki.SetActive(false);
+                break;
+        }
     }
 
     public void CloseInventory()
@@ -116,7 +137,7 @@ public class UiController : MonoBehaviour
         {
             if (Canvaser.GetComponent<BooksData>().CheckIsSolved())
             {
-                DisactiveBook();
+                DisactiveGame("Knigi");
                 hiddenObjects[0].SetActive(true);
             }
         }
